@@ -7,6 +7,12 @@ var scoreBoard = document.getElementById("scoreBoard");
 var moveWords = ["rock", "paper", "scissors"];
 var moves = ["r", "p", "s"];
 
+/* function main
+ * main runs whole program
+ * @param:none
+ * @return:none
+ */
+
 function main() {
    document.getElementById("playButton"). style.display = "none";
    let instructions = document.createElement("p");
@@ -21,11 +27,21 @@ function main() {
    board.appendChild(roundsButton);
 }
 
+/* function setRounds
+ * Gets rounds value from user input.
+ * @param:none
+ * @return:none
+ */
 function setRounds() {
    rounds = parseInt(document.getElementById("roundsBox").value);
    buildScoreBoard();
 }
 
+/* function buildScoreBoard
+ * Creates element that displays what round it is and how many left. Calls functions that add score boxes for player and computer.
+ * @param:none
+ * @return:none
+ */
 function buildScoreBoard(){
    let roundNumber = document.createElement("p");
    roundNumber.id="roundNumber";
@@ -35,6 +51,11 @@ function buildScoreBoard(){
    addScoreBox("computer", "Computer", 1);
 }
 
+/* function addScoreBox
+ * Creates div that displays score for player and computer, and adds to scoreBoard.
+ * @param:entity, entityLabel, index
+ * @return:none
+ */
 function addScoreBox(entity, entityLabel, index){
    let myDiv = document.createElement("div");
    myDiv.id = entity;
@@ -43,6 +64,11 @@ function addScoreBox(entity, entityLabel, index){
    buildConsole();
 }
 
+/* function buildConsole
+ *  Clears the board, and calls the function addPlayButton.
+ * @param:none
+ * @return:none
+ */
 function buildConsole() { 
    board.innerHTML = "";
    addPlayButton("rock", "r");
@@ -50,6 +76,12 @@ function buildConsole() {
    addPlayButton("scissors","s");
 }
 
+/* function addPlayButton
+ * Creates a button for a move with an event listener
+ * to call cpuTurn and send the move there.
+ * @param:hand, move
+ * @return:none
+ */
 function addPlayButton(hand, move){
     let playButton = document.createElement("button");
     playButton.id=hand;
@@ -60,6 +92,14 @@ function addPlayButton(hand, move){
     playButton.className="move"
     board.appendChild(playButton);
 }
+
+/* function cpuTurn
+ * Creates a random turn choice for computer, if player and computer choice are the same, alerts message.
+ * 
+ * @param: u
+ * @return:none
+ */
+//Global variable- var moves = ["r", "p", "s"];
 
 function cpuTurn(u) {
    let turn = Math.floor(Math.random() * 3);
@@ -77,6 +117,11 @@ function cpuTurn(u) {
    }
 }
 
+/* function main
+ * main runs whole program
+ * @param:none
+ * @return:none
+ */
 function makePopUp(message,target){
    let popup = document.createElement("div");
    popup.id="popup";
@@ -89,11 +134,21 @@ function makePopUp(message,target){
    document.body.insertBefore(popup, board);
 }
 
+/* function main
+ * main runs whole program
+ * @param:none
+ * @return:none
+ */
 function closePopup(target){
    document.getElementById("popup").remove();
    target;
 }
 
+/* function main
+ * main runs whole program
+ * @param:none
+ * @return:none
+ */
 function updateScore(winner) {
    if (winner == "I") score[1]++;
    else score[0]++;
@@ -103,6 +158,11 @@ function updateScore(winner) {
    buildScoreBoard();
 }
 
+/* function main
+ * main runs whole program
+ * @param:none
+ * @return:none
+ */
 function findWinner(combo) {
    let match = "";
    let winner = "";
@@ -123,6 +183,11 @@ function findWinner(combo) {
    return winner;
 }
 
+/* function main
+ * main runs whole program
+ * @param:none
+ * @return:none
+ */
 function finalWinner() {
    let endWinner = "";
    if (score[0] > score[1]) endWinner = "You";
