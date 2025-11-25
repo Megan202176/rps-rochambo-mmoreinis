@@ -38,7 +38,8 @@ function setRounds() {
 }
 
 /* function buildScoreBoard
- * Creates element that displays what round it is and how many left. Calls functions that add score boxes for player and computer.
+ * Creates element that displays what round it is and how many left. 
+ * Calls functions that add score boxes for player and computer.
  * @param:none
  * @return:none
  */
@@ -95,11 +96,11 @@ function addPlayButton(hand, move){
 
 /* function cpuTurn
  * Creates a random turn choice for computer, if player and computer choice are the same, alerts message.
- * 
+ * Else adds to round and alerts player move and computer move, and winner.
  * @param: u
  * @return:none
  */
-//Global variable- var moves = ["r", "p", "s"];
+/* Global variable- var moves = ["r", "p", "s"]; */
 
 function cpuTurn(u) {
    let turn = Math.floor(Math.random() * 3);
@@ -117,10 +118,10 @@ function cpuTurn(u) {
    }
 }
 
-/* function main
- * main runs whole program
- * @param:none
- * @return:none
+/* function makePopUp
+ * Creates div for popup message, and adds message to it.
+ * @param: message,target
+ * @return: none
  */
 function makePopUp(message,target){
    let popup = document.createElement("div");
@@ -134,9 +135,9 @@ function makePopUp(message,target){
    document.body.insertBefore(popup, board);
 }
 
-/* function main
- * main runs whole program
- * @param:none
+/* function closePopup
+ * Removes the popup
+ * @param:target
  * @return:none
  */
 function closePopup(target){
@@ -144,9 +145,9 @@ function closePopup(target){
    target;
 }
 
-/* function main
- * main runs whole program
- * @param:none
+/* function updateScore
+ * Adds a point to the winner, erases scoreboard, then calls buildScoreBoard()
+ * @param: winner
  * @return:none
  */
 function updateScore(winner) {
@@ -158,10 +159,11 @@ function updateScore(winner) {
    buildScoreBoard();
 }
 
-/* function main
- * main runs whole program
- * @param:none
- * @return:none
+/* function findWinner
+ * Compares combo to winArray, if they are equal, that is the winner.
+ * Returns winner
+ * @param:combo
+ * @return:winner
  */
 function findWinner(combo) {
    let match = "";
@@ -183,10 +185,11 @@ function findWinner(combo) {
    return winner;
 }
 
-/* function main
- * main runs whole program
+/* function finalWinner
+ * Compares index 0 and 1 of score array, winner is whoever is higher.
+ * Returns the end winner
  * @param:none
- * @return:none
+ * @return:endWinner
  */
 function finalWinner() {
    let endWinner = "";
